@@ -1,6 +1,6 @@
 <?php
 
-Yii::setPathOfAlias('TijsVerkoyen', Yii::getPathOfAlias('ext'));
+Yii::setPathOfAlias('TijsVerkoyen', Yii::getPathOfAlias('ext').DIRECTORY_SEPARATOR.'YiiMailerInline');
 
 Yii::import('ext.YiiMailerInline.YiiMailer');
 Yii::import('TijsVerkoyen.CssToInlineStyles.CssToInlineStyles');
@@ -38,12 +38,30 @@ class YiiMailerInline extends YiiMailer implements IApplicationComponent  {
     }
 
     public function render() {
-        parent::render();
-
-        $inliner = new \TijsVerkoyen\CssToInlineStyles\CssToInlineStyles($this->Body, file_get_contents($this->cssFilePath.$this->cssFileName));
-
-        $this->Body = $inliner->convert();
+        
+        $return = parent::render();
+        
+        $this->inline();
+        
+        return $return;
 
     }
+    
+    public function inline(){
+        
+        try{
+            
+            $inliner = new \TijsVerkoyen\CssToInlineStyles\CssToInlineStyles($this->Body, file_get_contents($this->cssFilePath.$this->cssFileName));
+            $this->Body = $inliner->convert();
+            
+            return true;
+            
+        } catch (Exception $e){
+            Yii::trace('Cannot convert CSS to inline. Error:'.$e);
+        }
+        
+        return false;
+    }
+   
 
 }
