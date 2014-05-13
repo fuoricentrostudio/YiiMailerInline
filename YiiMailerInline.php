@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'CssToInlineStyle'.DIRECTORY_SEPARATOR.'CssToInlineStyles.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'CssToInlineStyles'.DIRECTORY_SEPARATOR.'CssToInlineStyles.php';
 
 class YiiMailerInline extends YiiMailer implements IApplicationComponent  {
 
