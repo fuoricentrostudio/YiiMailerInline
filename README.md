@@ -13,13 +13,14 @@ Fork of the original Yii extension [YiiMailer](https://github.com/vernes/YiiMail
 
 
 ## Installation
-1. Clone (git clone https://github.com/fuoricentrostudio/YiiMailerInline.git) to protected/extensions
-2. Add 'ext.YiiMailerInline.*' line to your imports in main and/or console yii config
-3. Copy mail.php config file to protected/config or add configuration array in 'params' under the key 'YiiMailer'
-4. Create email layout file mail.php in protected/views/layouts/ (default path, can be changed in config)
-5. Create all the views you want to use in protected/views/mail/ (default path, can be changed in config)
-6. Put all images you want to embed in emails in images/mail/ (default path, can be changed in config)
-7. Create the file that you want to be converted in the /css/ folder of your theme and name it mail.css
+1. Clone git clone https://github.com/fuoricentrostudio/YiiMailerInline.git to protected/extensions
+2. Initialize all submodules with git submodule update --init --recursive
+3. Add 'ext.YiiMailerInline.*' line to your imports in main and/or console yii config
+4. Copy mail.php config file to protected/config or add configuration array in 'params' under the key 'YiiMailer'
+5. Create email layout file mail.php in protected/views/layouts/ (default path, can be changed in config)
+6. Create all the views you want to use in protected/views/mail/ (default path, can be changed in config)
+7. Put all images you want to embed in emails in images/mail/ (default path, can be changed in config)
+8. Create the file that you want to be converted in the /css/ folder of your theme and name it mail.css
 
 ## Usage
 
