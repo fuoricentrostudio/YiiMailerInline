@@ -1,6 +1,6 @@
-# YiiMailer
+# YiiMailerInline
 
-Yii extension for sending emails with layouts using [PHPMailer](https://github.com/PHPMailer/PHPMailer)
+Fork of the original Yii extension (https://github.com/vernes/YiiMailer) for sending emails with layouts using [PHPMailer](https://github.com/PHPMailer/PHPMailer) with embedded CSS to inline style="" HTML attribute thanks to (https://github.com/tijsverkoyen/CssToInlineStyles)
 
 ## Features
 
@@ -13,22 +13,23 @@ Yii extension for sending emails with layouts using [PHPMailer](https://github.c
 
 
 ## Installation
-1. Copy YiiMailer folder to protected/extensions
-2. Add 'ext.YiiMailer.YiiMailer' line to your imports in main and/or console yii config
+1. Clone (git clone https://github.com/fuoricentrostudio/YiiMailerInline.git) to protected/extensions
+2. Add 'ext.YiiMailerInline.*' line to your imports in main and/or console yii config
 3. Copy mail.php config file to protected/config or add configuration array in 'params' under the key 'YiiMailer'
 4. Create email layout file mail.php in protected/views/layouts/ (default path, can be changed in config)
 5. Create all the views you want to use in protected/views/mail/ (default path, can be changed in config)
 6. Put all images you want to embed in emails in images/mail/ (default path, can be changed in config)
+7. Create the file that you want to be converted in the /css/ folder of your theme and name it mail.css
 
 ## Usage
 
-Instantiate YiiMailer in your controller or console command and pass view and data array:
+Instantiate YiiMailerInline in your controller or console command and pass view and data array:
 <pre>
-$mail = new YiiMailer('contact', array('message' => 'Message to send', 'name' => 'John Doe', 'description' => 'Contact form'));
+$mail = new YiiMailerInline('contact', array('message' => 'Message to send', 'name' => 'John Doe', 'description' => 'Contact form'));
 </pre>
 or
 <pre>
-$mail = new YiiMailer();
+$mail = new YiiMailerInline();
 $mail->setView('contact');
 $mail->setData(array('message' => 'Message to send', 'name' => 'John Doe', 'description' => 'Contact form'));
 </pre>
@@ -58,7 +59,7 @@ if ($mail->send()) {
 
 You can send email without both the layout and view by using:
 <pre>
-$mail = new YiiMailer();
+$mail = new YiiMailerInline();
 //$mail->clearLayout();//if layout is already set in config
 $mail->setFrom('from@example.com', 'John Doe');
 $mail->setTo(Yii::app()->params['adminEmail']);
